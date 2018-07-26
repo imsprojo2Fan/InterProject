@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.inter.dao.GroupMapper" >
+  <resultMap id="BaseResultMap" type="com.inter.model.Group" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="owner_id" property="ownerId" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="views" property="views" jdbcType="INTEGER" />
+    <result column="topics" property="topics" jdbcType="INTEGER" />
+    <result column="peoples" property="peoples" jdbcType="INTEGER" />
+    <result column="updated" property="updated" jdbcType="TIMESTAMP" />
+    <result column="created" property="created" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, owner_id, title, type_id, views, topics, peoples, updated, created
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.inter.model.Group" >
+    insert into group (id, owner_id, title, 
+      type_id, views, topics, 
+      peoples, updated, created
+      )
+    values (#{id,jdbcType=INTEGER}, #{ownerId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{typeId,jdbcType=INTEGER}, #{views,jdbcType=INTEGER}, #{topics,jdbcType=INTEGER}, 
+      #{peoples,jdbcType=INTEGER}, #{updated,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.inter.model.Group" >
+    insert into group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="ownerId != null" >
+        owner_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="views != null" >
+        views,
+      </if>
+      <if test="topics != null" >
+        topics,
+      </if>
+      <if test="peoples != null" >
+        peoples,
+      </if>
+      <if test="updated != null" >
+        updated,
+      </if>
+      <if test="created != null" >
+        created,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ownerId != null" >
+        #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="views != null" >
+        #{views,jdbcType=INTEGER},
+      </if>
+      <if test="topics != null" >
+        #{topics,jdbcType=INTEGER},
+      </if>
+      <if test="peoples != null" >
+        #{peoples,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null" >
+        #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created != null" >
+        #{created,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.inter.model.Group" >
+    update group
+    <set >
+      <if test="ownerId != null" >
+        owner_id = #{ownerId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="views != null" >
+        views = #{views,jdbcType=INTEGER},
+      </if>
+      <if test="topics != null" >
+        topics = #{topics,jdbcType=INTEGER},
+      </if>
+      <if test="peoples != null" >
+        peoples = #{peoples,jdbcType=INTEGER},
+      </if>
+      <if test="updated != null" >
+        updated = #{updated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="created != null" >
+        created = #{created,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.inter.model.Group" >
+    update group
+    set owner_id = #{ownerId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      views = #{views,jdbcType=INTEGER},
+      topics = #{topics,jdbcType=INTEGER},
+      peoples = #{peoples,jdbcType=INTEGER},
+      updated = #{updated,jdbcType=TIMESTAMP},
+      created = #{created,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="listAllCount" parameterType="Map" resultType="java.lang.Integer">
+    select count(*) from group
+    <if test="searchKey !=null and searchKey!=''">
+      where ( account like '%${searchKey}%' OR name LIKE '%${searchKey}%' )
+    </if>
+  </select>
+
+  <select id="listByPage" parameterType="Map" resultType="Map">
+    select * from group
+
+    <if test="searchKey !=null and searchKey!=''">
+      where (account like '%${searchKey}%' OR name LIKE '%${searchKey}%')
+    </if>
+    <if test="sortCol !=null and sortCol!='' ">
+      Order by ${sortCol} ${sortType}
+    </if>
+
+    LIMIT ${pageNow},${pageSize}
+  </select>
+</mapper>

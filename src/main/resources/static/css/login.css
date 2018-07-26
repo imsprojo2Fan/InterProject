@@ -1,0 +1,107 @@
+/*================================================================================
+	Item Name: Kode
+	Description: Premium Bootstrap Admin Template
+	Author: Egemen Kapusuz
+	Author URL: http://www.themeforest.net/user/egemem
+================================================================================*/
+
+/* ================================================
+Google Web Fonts
+================================================ */
+/* Montserrat */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+/* Open Sans */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,800,300);
+
+/* === Icons === */
+/* Font Awesome */
+@import url('font-awesome.min.css');
+
+/* ================================================
+Main Css
+================================================ */
+/* Bootstrap Main Css File (unedited) */
+@import url('../plugins/bootstrap/bootstrap.css');
+
+/* Theme Style */
+@import url('style.css');
+
+/* Responsive Style */
+@import url('responsive.css');
+
+
+/* ================================================
+Plugin Css
+================================================ */
+/* Awesome Bootstrap Checkbox */
+@import url('../plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css');
+
+
+/* Sweet Alert */
+@import url('../plugins/sweet-alert/sweet-alert.css');
+
+/* Data Tables */
+/* @import url('plugins/datatables/datatables.css'); */
+
+html{
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+body{background: #F5F5F5;}
+.login-form{
+    margin:8% auto;
+}
+.login-form form {
+    /* background: transparent; */
+    border: 1px solid #fff;
+    border-radius: 3px;
+    background-color: rgba(255,255,255,0.3);
+
+}
+/*input{
+    background-color:transparent;
+}*/
+
+.login-footer{
+    position: absolute;
+    width: 100%;
+    bottom: 12px;
+    text-align: center;
+    color: #fff;
+}
+.blue{
+    color: #5cadff;
+}
+.green{
+    color:#97ea74;
+}
+
+.previews {
+    display: block;
+    list-style: none;
+    width: 85%;
+    margin: 34px auto 0;
+}
+.previews.bigs li {
+    max-width: 250px;
+    width: 10%;
+}
+.preview-item.transp {
+    color: white;
+    background-color: transparent!important;
+}
+.preview-item.big {
+    width: 100%;
+    height: 0;
+    font-size: 45px;
+    line-height: 100%;
+    padding-bottom: 20%;
+}
+.preview-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
