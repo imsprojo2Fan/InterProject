@@ -52,16 +52,17 @@
           }
       });
 
+      function tip() {
+          swal("点我干嘛，我头晕🤮",'(￣.￣)/无言',"info");
+      }
+
   </script>
   </head>
 <body>
 
-<div id="loading" class="loading-wrap">
+<div id="loading" class="loading-wrap" style="display: none">
   <div class="loader" >
-    <div class="la-pacman la-3x">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="la-fire la-3x">
       <div></div>
       <div></div>
       <div></div>
@@ -85,11 +86,11 @@
       <form id="login_form">
         <div class="top">
           <!-- <img src="img/b-logo.png" alt="icon" class="icon"> -->
-          <h1><span class="blue">圈</span><span class="green">了</span><span class="blue">圈</span><span style="color: #fff;margin: 0 5px;">•</span><span class="green" >看</span><span class="blue">厦门</span></h1>
-          <h4 style="color:#fff;">只和有趣的人玩儿[]~(￣▽￣)~*</h4>
+          <h1><span class="blue">圈</span><span class="green">个</span><span class="blue">圈</span><span style="color: #fff;margin: 0 5px;">•</span><span class="green" >看</span><span class="blue">厦门</span></h1>
+          <h4 style="color:#fff;">只和有趣的人玩儿😎</h4>
           <ul class="previews bigs">
             <li style="margin-left: 35%">
-              <i class="preview-item big transp shake-hard shake-freeze" id="pr1">
+              <i onclick="tip()" style="cursor: pointer" class="preview-item big transp shake-crazy shake-freeze" id="pr1">
                 <span class="preview-icon">🙊</span>
               </i>
             </li>

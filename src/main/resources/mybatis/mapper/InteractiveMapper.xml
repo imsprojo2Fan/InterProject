@@ -6,13 +6,14 @@
     <result column="content_id" property="contentId" jdbcType="INTEGER" />
     <result column="like" property="like" jdbcType="INTEGER" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="readed" property="readed" jdbcType="INTEGER" />
     <result column="from_uid" property="fromUid" jdbcType="INTEGER" />
     <result column="to_uid" property="toUid" jdbcType="INTEGER" />
     <result column="updated" property="updated" jdbcType="TIMESTAMP" />
     <result column="created" property="created" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, content_id, like, comment, from_uid, to_uid, updated, created
+    id, content_id, like, comment,readed, from_uid, to_uid, updated, created
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -26,10 +27,10 @@
   </delete>
   <insert id="insert" parameterType="com.inter.model.Interactive" >
     insert into interactive (id, content_id, like, 
-      comment, from_uid, to_uid, 
+      comment,readed, from_uid, to_uid,
       updated, created)
     values (#{id,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, #{like,jdbcType=INTEGER}, 
-      #{comment,jdbcType=VARCHAR}, #{fromUid,jdbcType=INTEGER}, #{toUid,jdbcType=INTEGER}, 
+      #{comment,jdbcType=VARCHAR},#{readed,jdbcType=INTEGER}, #{fromUid,jdbcType=INTEGER}, #{toUid,jdbcType=INTEGER},
       #{updated,jdbcType=TIMESTAMP}, #{created,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.inter.model.Interactive" >
@@ -46,6 +47,9 @@
       </if>
       <if test="comment != null" >
         comment,
+      </if>
+      <if test="readed != null" >
+        readed,
       </if>
       <if test="fromUid != null" >
         from_uid,
@@ -73,6 +77,9 @@
       <if test="comment != null" >
         #{comment,jdbcType=VARCHAR},
       </if>
+      <if test="readed != null" >
+        #{readed,jdbcType=INTEGER},
+      </if>
       <if test="fromUid != null" >
         #{fromUid,jdbcType=INTEGER},
       </if>
@@ -99,6 +106,9 @@
       <if test="comment != null" >
         comment = #{comment,jdbcType=VARCHAR},
       </if>
+      <if test="readed != null" >
+        readed = #{readed,jdbcType=INTEGER},
+      </if>
       <if test="fromUid != null" >
         from_uid = #{fromUid,jdbcType=INTEGER},
       </if>
@@ -119,6 +129,7 @@
     set content_id = #{contentId,jdbcType=INTEGER},
       like = #{like,jdbcType=INTEGER},
       comment = #{comment,jdbcType=VARCHAR},
+      readed = #{readed,jdbcType=INTEGER},
       from_uid = #{fromUid,jdbcType=INTEGER},
       to_uid = #{toUid,jdbcType=INTEGER},
       updated = #{updated,jdbcType=TIMESTAMP},

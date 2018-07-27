@@ -11,6 +11,8 @@ public class Interactive {
 
     private String comment;
 
+    private Integer readed;
+
     private Integer fromUid;
 
     private Integer toUid;
@@ -49,6 +51,14 @@ public class Interactive {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Integer getReaded() {
+        return readed;
+    }
+
+    public void setReaded(Integer readed) {
+        this.readed = readed;
     }
 
     public Integer getFromUid() {
